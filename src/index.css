@@ -97,6 +97,10 @@
   color: var(--text);
 }
 
+.home{
+  display: flex;
+}
+
 .left{
   width: 50%;
   height: 89vh;
@@ -175,9 +179,103 @@
   align-items: center;
   margin-right: 7%;
   justify-content: flex-end;
+}
+
+.left-social a{
+  font-size: 20px;
+  text-decoration: none;
   color: var(--text);
 }
 
-.left-social p{
+.right{
+  width: 50%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.right-title{
+  font-family: var(--font8);
+  font-size: 50px;
+  margin-top: 7%;
+  margin-left: 4%;
+  width: 100%;
+  height: 10%;
+  /* border: 1px solid var(--text); */
+  color: var(--text);
+  font-weight: 800;
+}
+
+.fileupload{
+  width: 90%;
+  margin-left: 5%;
+  /* height: 80%; */
+  border: 3px dashed var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4%;
+  gap: 10px;
+  margin-top: 5%;
+}
+
+.right-upload{
+  font-family: var(--font1);
+  font-size: 25px;
+  width: 60%;
+  height: 100%;
+  /* border: 1px solid var(--text); */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-weight: 400;
+  /* margin-top: 3%; */
+  background-color: var(--text);
+  border-radius: 5px;
+}
+
+.right-desc{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 80%;
+  width: 100%;
+  /* border: 1px solid var(--text); */
+}
+
+.right-desc p{
+  font-family: var(--font3);
   font-size: 20px;
+  width: 100%;
+  /* height: 30%; */
+  /* border: 1px solid var(--text); */
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-weight: 500;
+  /* margin-top: 3%; */
+}
+
+.extracted-text{
+  font-family: var(--font3);
+  font-size: 20px;
+  width: 90%;
+  margin-left: 5%;
+  height: fit-content;
+  border: 1px solid var(--text);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-weight: 500;
+  margin-top: 3%;
 }
