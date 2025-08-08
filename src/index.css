@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rowdies:wght@300;400;700&family=Rubik+Vinyl&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&family=Unbounded:wght@200..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --font1: 'Londrina Solid', cursive;
+  --font2: 'Montserrat', sans-serif;
+  --font3: 'Poppins', sans-serif;
+  --font4: 'Rowdies', cursive;
+  --font5: 'Rubik Vinyl', cursive;
+  --font6: 'Sour Gummy', sans-serif;
+  --font7: 'Space Grotesk', sans-serif;
+  --font8: 'Unbounded', sans-serif;
+  --font9: 'Space Mono', monospace;
+  --font10: 'Lobster', cursive;
+  --text: #1c871c;
+}
+
+.nav {
+  height: 11vh;
+  width: 100%;
+  color: var(--text);
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  box-shadow: 0 0 15px var(--text);
+}
+
+.nav-title {
+  font-family: var(--font1);
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-left: 2%;
+  width: 31.3%;
+}
+
+.nav-title,
+.nav-menu,
+.nav-btn {
+  width: 33.3%;
+  /* border: 1px solid var(--text); */
+  list-style: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu {
+  justify-content: space-between;
+  font-family: var(--font2);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.nav-btn {
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.btn:nth-child(1) {
+  font-family: var(--font2);
+  font-size: 1.1rem;
+  font-weight: 700;
+  background-color: var(--text);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  width: 20%;
+  border: 1px solid var(--text);
+}
+
+.btn:nth-child(2) {
+  font-family: var(--font2);
+  font-size: 1.1rem;
+  font-weight: 700;
+  background-color: #fff;
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  width: 20%;
+  border: 1px solid var(--text);
+  margin-right: 2rem;
+}
+
+.link,
+.btn {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+
+.link {
+  color: var(--text);
+}
