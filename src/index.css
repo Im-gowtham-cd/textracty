@@ -342,22 +342,47 @@
   cursor: not-allowed;
 }
 
-/* Improve the extracted text display */
 .extracted-text {
   font-family: var(--font3);
   font-size: 18px;
   width: 90%;
   margin-left: 5%;
-  min-height: 100px;
-  max-height: 300px;
-  overflow-y: auto;
+  height: fit-content;
+  /* max-height: 300px; */
+  /* overflow-y: auto; */
   border: 1px solid var(--text);
   color: var(--text);
-  display: block; /* Change from flex to block for better text display */
+  display: block;
   padding: 15px;
   text-align: left;
   font-weight: 400;
   margin-top: 3%;
   line-height: 1.5;
   border-radius: 5px;
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 80px;
+  padding: 5px 10px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  color: var(--text);
+  transition: all 0.4s ease;
+}
+
+.copy-btn:hover {
+  background-color: var(--text);
+  color: #fff;
+  border-radius: 5px;
+  /* padding: 10px; */
 }

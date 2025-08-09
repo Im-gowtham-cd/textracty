@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaTwitter, FaFacebookF, FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa';
+import { FaTwitter, FaFacebookF, FaInstagram, FaLinkedinIn, FaGithub, FaRegCopy } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { createWorker } from 'tesseract.js';
 
@@ -114,6 +114,18 @@ export default function Home() {
     };
   }, [imageUrl]);
 
+  function Copy(d) {
+    const t = document.getElementById(d).textContent;
+    const temp = document.createElement('textarea');
+    temp.value = t;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand("copy");
+    document.body.removeChild(temp);
+    // alert("Copied the text: " + t.value);
+
+  }
+
   return (
     <div className='home'>
       <div className="left">
@@ -156,7 +168,11 @@ export default function Home() {
         )}
 
         <p className='right-title'>Extracted Text</p>
-        <div className='extracted-text'>{extractedText}</div>
+        <div className='extracted-text' id='exetext'>
+          {extractedText}
+          <button className='copy-btn' onClick={() => Copy('exetext')}><FaRegCopy />Copy</button>
+        </div>
+
 
         <div className="translation-section">
           <div className="translation-header">
@@ -229,8 +245,9 @@ export default function Home() {
               <option value="km">Khmer</option>
             </select>
           </div>
-          <div className='extracted-text'>
+          <div className='extracted-text' id="translatetext">
             {isTranslating ? 'Translating...' : translatedText}
+            <button className='copy-btn' onClick={() => Copy('translatetext')}><FaRegCopy />Copy</button>
           </div>
         </div>
       </div>
