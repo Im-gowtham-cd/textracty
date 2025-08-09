@@ -386,3 +386,7 @@
   border-radius: 5px;
   /* padding: 10px; */
 }
+
+.translation-header .right-title{
+  margin-left: 0;
+}

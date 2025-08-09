@@ -151,7 +151,7 @@ export default function Home() {
         <label htmlFor="file-upload" className="fileupload">
           <input id="file-upload" type="file" onChange={handleFileUpload} hidden />
           <span className='right-desc'>
-            <p>Supported file types: JPG, JPEG, PNG, PDF</p>
+            <p>Supported file types: JPG, JPEG, PNG</p>
             <p>Max file size: 10MB</p>
           </span>
           <i className="fas fa-cloud-upload-alt"></i>
@@ -172,7 +172,6 @@ export default function Home() {
           {extractedText}
           <button className='copy-btn' onClick={() => Copy('exetext')}><FaRegCopy />Copy</button>
         </div>
-
 
         <div className="translation-section">
           <div className="translation-header">
@@ -245,10 +244,12 @@ export default function Home() {
               <option value="km">Khmer</option>
             </select>
           </div>
+
           <div className='extracted-text' id="translatetext">
             {isTranslating ? 'Translating...' : translatedText}
             <button className='copy-btn' onClick={() => Copy('translatetext')}><FaRegCopy />Copy</button>
           </div>
+
         </div>
       </div>
     </div>
