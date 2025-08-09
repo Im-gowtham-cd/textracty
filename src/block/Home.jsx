@@ -9,7 +9,7 @@ export default function Home() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
-  const [targetLanguage, setTargetLanguage] = useState('es');
+  const [targetLanguage, setTargetLanguage] = useState('en');
   const [isTranslating, setIsTranslating] = useState(false);
 
   const message = [
@@ -48,15 +48,10 @@ export default function Home() {
     setTranslatedText('');
 
     try {
-      // You can specify multiple languages for Tesseract by separating them with a plus sign, e.g., 'eng+spa'
-      const worker = await createWorker('eng'); 
+      const worker = await createWorker('eng');
       const { data } = await worker.recognize(file);
       await worker.terminate();
       setExtractedText(data.text);
-
-      if (data.text) {
-        translateText(data.text);
-      }
     } catch (error) {
       setExtractedText('Error extracting text: ' + error.message);
       console.error('OCR Error:', error);
@@ -72,7 +67,9 @@ export default function Home() {
     setTranslatedText('Translating...');
 
     try {
-      const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|${targetLanguage}`);
+      const response = await fetch(
+        `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|${targetLanguage}`
+      );
 
       if (!response.ok) {
         throw new Error('Translation failed: Network response was not ok.');
@@ -92,13 +89,23 @@ export default function Home() {
     }
   };
 
+  // Handle language dropdown change
   const handleLanguageChange = (e) => {
     setTargetLanguage(e.target.value);
-    if (extractedText && extractedText !== 'Processing...' && extractedText.length > 0) {
-      translateText(extractedText);
-    }
   };
 
+  // Run translation whenever language OR extracted text changes
+  useEffect(() => {
+    if (
+      extractedText &&
+      extractedText !== 'Processing...' &&
+      extractedText.length > 0
+    ) {
+      translateText(extractedText);
+    }
+  }, [targetLanguage, extractedText]);
+
+  // Cleanup URL object
   useEffect(() => {
     return () => {
       if (imageUrl) {
@@ -160,16 +167,66 @@ export default function Home() {
               className="language-selector"
               disabled={isTranslating || !extractedText || extractedText === 'Processing...'}
             >
-              <option value="es">Spanish</option>
+              <option value="af">Afrikaans</option>
+              <option value="am">Amharic</option>
+              <option value="ar">Arabic</option>
+              <option value="bn">Bengali</option>
+              <option value="bg">Bulgarian</option>
+              <option value="my">Burmese</option>
+              <option value="zh">Chinese</option>
+              <option value="hr">Croatian</option>
+              <option value="cs">Czech</option>
+              <option value="da">Danish</option>
+              <option value="nl">Dutch</option>
+              <option value="en">English</option>
+              <option value="et">Estonian</option>
+              <option value="fi">Finnish</option>
               <option value="fr">French</option>
               <option value="de">German</option>
+              <option value="el">Greek</option>
+              <option value="he">Hebrew</option>
+              <option value="hi">Hindi</option>
+              <option value="hu">Hungarian</option>
+              <option value="is">Icelandic</option>
+              <option value="id">Indonesian</option>
               <option value="it">Italian</option>
-              <option value="pt">Portuguese</option>
-              <option value="ru">Russian</option>
-              <option value="zh">Chinese</option>
               <option value="ja">Japanese</option>
               <option value="ko">Korean</option>
-              <option value="ar">Arabic</option>
+              <option value="lo">Lao</option>
+              <option value="lv">Latvian</option>
+              <option value="lt">Lithuanian</option>
+              <option value="ms">Malay</option>
+              <option value="mt">Maltese</option>
+              <option value="mr">Marathi</option>
+              <option value="ne">Nepali</option>
+              <option value="no">Norwegian</option>
+              <option value="pa">Punjabi</option>
+              <option value="fa">Persian</option>
+              <option value="pl">Polish</option>
+              <option value="pt">Portuguese</option>
+              <option value="ro">Romanian</option>
+              <option value="ru">Russian</option>
+              <option value="sr">Serbian</option>
+              <option value="si">Sinhala</option>
+              <option value="sk">Slovak</option>
+              <option value="sl">Slovenian</option>
+              <option value="es">Spanish</option>
+              <option value="sw">Swahili</option>
+              <option value="sv">Swedish</option>
+              <option value="ta">Tamil</option>
+              <option value="te">Telugu</option>
+              <option value="th">Thai</option>
+              <option value="tr">Turkish</option>
+              <option value="uk">Ukrainian</option>
+              <option value="ur">Urdu</option>
+              <option value="vi">Vietnamese</option>
+              <option value="xh">Xhosa</option>
+              <option value="yo">Yoruba</option>
+              <option value="zu">Zulu</option>
+              <option value="km">Khmer</option>
+              <option value="ga">Irish</option>
+              <option value="km">Khmer</option>
+              <option value="km">Khmer</option>
             </select>
           </div>
           <div className='extracted-text'>
