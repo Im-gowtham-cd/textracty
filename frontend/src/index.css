@@ -25,10 +25,12 @@
   width: 100%;
   color: var(--text);
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   box-shadow: 0 0 15px var(--text);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.3);
 }
+
 
 .nav-title {
   font-family: var(--font1);
@@ -97,11 +99,12 @@
   color: var(--text);
 }
 
-.home{
+.home {
   display: flex;
+  flex-wrap: wrap;
 }
 
-.left{
+.left {
   width: 50%;
   height: 89vh;
   position: relative;
@@ -110,7 +113,7 @@
 
 }
 
-.left::after{
+.left::after {
   position: absolute;
   content: '';
   width: 1%;
@@ -121,7 +124,7 @@
   border-radius: 10px;
 }
 
-.left-title{
+.left-title {
   font-family: var(--font8);
   font-size: 50px;
   margin-top: 7%;
@@ -133,7 +136,7 @@
   font-weight: 800;
 }
 
-.left-desc{
+.left-desc {
   font-family: var(--font3);
   font-size: 19px;
   width: 100%;
@@ -148,11 +151,11 @@
   margin-top: 3%;
 }
 
-.left-desc li{
+.left-desc li {
   margin-left: 8.3%;
 }
 
-.left-btn{
+.left-btn {
   height: 25%;
   /* border: 1px solid var(--text); */
   display: flex;
@@ -162,17 +165,17 @@
   /* gap: 100px; */
   justify-content: space-evenly;
   /* align-items: center; */
-} 
+}
 
-.left-btn .btn{
+.left-btn .btn {
   width: 87%;
   margin-left: 6%;
   height: 30%;
   align-items: center;
 }
 
-.left-social{
-  margin-top:3%;
+.left-social {
+  margin-top: 3%;
   display: flex;
   gap: 30px;
   height: 10%;
@@ -181,13 +184,13 @@
   justify-content: flex-end;
 }
 
-.left-social a{
+.left-social a {
   font-size: 20px;
   text-decoration: none;
   color: var(--text);
 }
 
-.right{
+.right {
   width: 50%;
   height: 80vh;
   display: flex;
@@ -196,7 +199,7 @@
   overflow-x: hidden;
 }
 
-.right-title{
+.right-title {
   font-family: var(--font8);
   font-size: 50px;
   margin-top: 7%;
@@ -208,7 +211,7 @@
   font-weight: 800;
 }
 
-.fileupload{
+.fileupload {
   width: 90%;
   margin-left: 5%;
   /* height: 80%; */
@@ -222,7 +225,7 @@
   margin-top: 5%;
 }
 
-.right-upload{
+.right-upload {
   font-family: var(--font1);
   font-size: 25px;
   width: 60%;
@@ -239,7 +242,7 @@
   border-radius: 5px;
 }
 
-.right-desc{
+.right-desc {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -249,7 +252,7 @@
   /* border: 1px solid var(--text); */
 }
 
-.right-desc p{
+.right-desc p {
   font-family: var(--font3);
   font-size: 20px;
   width: 100%;
@@ -264,7 +267,7 @@
   /* margin-top: 3%; */
 }
 
-.extracted-text{
+.extracted-text {
   font-family: var(--font3);
   font-size: 20px;
   width: 90%;
@@ -299,21 +302,24 @@
   border-radius: 5px;
   margin-top: 7%;
   background-color: #f9f9f9;
-  overflow: hidden; /* Prevent image overflow */
+  overflow: hidden;
+  /* Prevent image overflow */
 }
 
 .image-preview img {
   max-width: 100%;
   max-height: 300px;
   object-fit: contain;
-  display: block; /* Remove extra space below image */
-  margin: 0 auto; /* Center the image */
+  display: block;
+  /* Remove extra space below image */
+  margin: 0 auto;
+  /* Center the image */
 }
 
 .translation-section {
   width: 100%;
   margin-top: 3%;
-  margin-bottom: 5%;  
+  margin-bottom: 5%;
 }
 
 .translation-header {
@@ -387,6 +393,71 @@
   /* padding: 10px; */
 }
 
-.translation-header .right-title{
+.translation-header .right-title {
   margin-left: 0;
+}
+
+@media (max-width:480px) {
+
+  .nav{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+  }
+
+  .home{
+    margin-top: 20%;
+  }
+
+  .nav-title {
+    font-size: 1.5rem;
+    width: 40%;
+  }
+
+  .nav-menu {
+    font-size: 0.9rem;
+    width: 55%;
+  }
+
+  .nav-btn {
+    display: none;
+  }
+
+  .left {
+    width: 100%;
+  }
+
+  .left::after {
+    position: absolute;
+    content: '';
+    width: 90%;
+    height: 1%;
+    top: 95%;
+    right: 5%;
+    background-color: var(--text);
+    border-radius: 10px;
+  }
+
+  .left-desc{
+    height: fit-content;
+  }
+
+  .right {
+    width: 100%;
+    height: fit-content;
+    /* overflow-y: hidden;
+    overflow-x: hidden; */
+  }
+
+  .right-desc p {
+    font-size: 18px;
+  }
+
+  .right-desc p:first-child{
+    font-size: 16px;
+  }
+
+  .right-title{
+    font-size: 27px;
+  }
 }
