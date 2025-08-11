@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {Link} from "react-router-dom"
 
 export default function Signup() {
   const [fullName, setFullName] = useState("");
@@ -86,7 +87,7 @@ export default function Signup() {
           <button type="submit" className="login-btn">Sign up</button>
 
           <p className="signup-text">
-            Already have an account? <a href="/login">Sign in</a>
+            Already have an account? <Link to={"/login"}>Sign in</Link>
           </p>
         </form>
       </div>
