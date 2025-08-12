@@ -1,14 +1,16 @@
 import { useState } from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function Signup() {
   const [fullName, setFullName] = useState("");
+  const [username, setUsername] = useState(""); // NEW state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -17,27 +19,45 @@ export default function Signup() {
     }
 
     setError("");
-    console.log("Full Name:", fullName);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    // TODO: Call backend signup API here
+    setSuccess("");
+
+    try {
+      const response = await fetch("http://localhost:5000/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullName, username, email, password }) // include username
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || "Signup failed");
+      } else {
+        setSuccess("Signup successful! You can now log in.");
+        setFullName("");
+        setUsername(""); // clear username
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+      }
+    } catch (err) {
+      console.error("Signup Error:", err);
+      setError("Failed to connect to the server");
+    }
   };
 
   return (
     <div className="login-wrapper">
       <div className="login-left">
         <h1>Create Your Account</h1>
-        <p>
-          Join our growing community and unlock access to members-only content,
-          tools, and personalized experiences.
-        </p>
+        <p>Join our growing community and unlock members-only content.</p>
       </div>
 
-      {/* Right side signup form */}
       <div className="login-right">
         <form className="login-form" onSubmit={handleSubmit}>
           <h2>Sign up</h2>
 
+          {/* Full Name */}
           <div className="form-group">
             <label>Full Name</label>
             <input
@@ -49,6 +69,19 @@ export default function Signup() {
             />
           </div>
 
+          {/* Username - NEW */}
+          <div className="form-group">
+            <label>Username</label>
+            <input
+              type="text"
+              placeholder="Choose a username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+
+          {/* Email */}
           <div className="form-group">
             <label>Email</label>
             <input
@@ -60,6 +93,7 @@ export default function Signup() {
             />
           </div>
 
+          {/* Password */}
           <div className="form-group">
             <label>Password</label>
             <input
@@ -71,6 +105,7 @@ export default function Signup() {
             />
           </div>
 
+          {/* Confirm Password */}
           <div className="form-group">
             <label>Confirm Password</label>
             <input
@@ -82,10 +117,14 @@ export default function Signup() {
             />
           </div>
 
-          {error && <p style={{ color: "red", fontSize: "0.9rem" }}>{error}</p>}
+          {/* Error & Success Messages */}
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          {success && <p style={{ color: "green" }}>{success}</p>}
 
+          {/* Submit Button */}
           <button type="submit" className="login-btn">Sign up</button>
 
+          {/* Redirect Link */}
           <p className="signup-text">
             Already have an account? <Link to={"/login"}>Sign in</Link>
           </p>

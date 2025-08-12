@@ -1,22 +1,52 @@
 import { useState } from "react";
-import {Link} from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-    // TODO: Call backend authentication API here
+    setError("");
+
+    try {
+      const res = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "Login failed");
+        return;
+      }
+
+      // Save user info (token + fullName + email)
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          token: data.token,
+          fullName: data.fullName,
+          email: data.email,
+        })
+      );
+
+      navigate("/");
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("Server error. Please try again.");
+    }
   };
 
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Login</h2>
-        
+
         <div className="form-group">
           <label>Email</label>
           <input
@@ -39,14 +69,11 @@ export default function Login() {
           />
         </div>
 
-        <div className="form-extra">
-          <label>
-            <input type="checkbox" /> Remember me
-          </label>
-          <a href="/forgot-password">Forgot password?</a>
-        </div>
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
-        <button type="submit" className="login-btn">Login</button>
+        <button type="submit" className="login-btn">
+          Login
+        </button>
 
         <p className="signup-text">
           Don't have an account? <Link to={"/signup"}>Sign up</Link>
