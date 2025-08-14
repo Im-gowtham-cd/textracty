@@ -3,7 +3,7 @@ export default function About() {
     <div className="about-container">
       <h1 className="about-title">About Textracty</h1>
       <p className="about-text">
-        Welcome to <strong>Textracty</strong> — an AI-powered platform designed to
+        Welcome to <strong>Textracty</strong> — an platform designed to
         extract, process, and translate text from scanned PDFs, images, and handwritten
         documents with remarkable accuracy.
       </p>
