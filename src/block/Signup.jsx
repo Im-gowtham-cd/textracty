@@ -57,7 +57,6 @@ export default function Signup() {
         <form className="login-form" onSubmit={handleSubmit}>
           <h2>Sign up</h2>
 
-          {/* Full Name */}
           <div className="form-group">
             <label>Full Name</label>
             <input
@@ -69,7 +68,6 @@ export default function Signup() {
             />
           </div>
 
-          {/* Username - NEW */}
           <div className="form-group">
             <label>Username</label>
             <input
@@ -81,7 +79,6 @@ export default function Signup() {
             />
           </div>
 
-          {/* Email */}
           <div className="form-group">
             <label>Email</label>
             <input
@@ -93,7 +90,6 @@ export default function Signup() {
             />
           </div>
 
-          {/* Password */}
           <div className="form-group">
             <label>Password</label>
             <input
@@ -105,7 +101,6 @@ export default function Signup() {
             />
           </div>
 
-          {/* Confirm Password */}
           <div className="form-group">
             <label>Confirm Password</label>
             <input
@@ -117,14 +112,11 @@ export default function Signup() {
             />
           </div>
 
-          {/* Error & Success Messages */}
           {error && <p style={{ color: "red" }}>{error}</p>}
           {success && <p style={{ color: "green" }}>{success}</p>}
 
-          {/* Submit Button */}
           <button type="submit" className="login-btn">Sign up</button>
 
-          {/* Redirect Link */}
           <p className="signup-text">
             Already have an account? <Link to={"/login"}>Sign in</Link>
           </p>

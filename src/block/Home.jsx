@@ -12,6 +12,42 @@ export default function Home() {
   const [targetLanguage, setTargetLanguage] = useState('en');
   const [isTranslating, setIsTranslating] = useState(false);
 
+    const language = [
+    {n: 'Arabic', v: 'ar'},
+    {n: 'Bulgarian', v: 'bg'},
+    {n: 'Chinese', v: 'zh'},
+    {n: 'Croatian', v: 'hr'},
+    {n: 'Czech', v: 'cs'},
+    {n: 'Danish', v: 'da'},
+    {n: 'English', v: 'en'},
+    {n: 'Finnish', v: 'fi'},
+    {n: 'French', v: 'fr'},
+    {n: 'German', v: 'de'},
+    {n: 'Greek', v: 'el'},
+    {n: 'Hebrew', v: 'he'},
+    {n: 'Hindi', v: 'hi'},
+    {n: 'Hungarian', v: 'hu'},
+    {n: 'Italian', v: 'it'},
+    {n: 'Japanese', v: 'ja'},
+    {n: 'Korean', v: 'ko'},
+    {n: 'Latvian', v: 'lv'},
+    {n: 'Lithuanian', v: 'lt'},
+    {n: 'Macedonian', v: 'mk'},
+    {n: 'Norwegian', v: 'no'},
+    {n: 'Persian', v: 'fa'},
+    {n: 'Polish', v: 'pl'},
+    {n: 'Portuguese', v: 'pt'},
+    {n: 'Romanian', v: 'ro'},
+    {n: 'Russian', v: 'ru'},
+    {n: 'Slovak', v: 'sk'},
+    {n: 'Slovenian', v: 'sl'},
+    {n: 'Spanish', v: 'es'},
+    {n: 'Swedish', v: 'sv'},
+    {n: 'Tamil', v: 'ta'},
+    {n: 'Turkish', v: 'tr'},
+    {n: 'Vietnamese', v: 'vi'}
+];
+
   const message = [
     'Extracts text from images and documents',
     'Uses advanced OCR for high accuracy',
@@ -182,66 +218,9 @@ export default function Home() {
               className="language-selector"
               disabled={isTranslating || !extractedText || extractedText === 'Processing...'}
             >
-              <option value="af">Afrikaans</option>
-              <option value="am">Amharic</option>
-              <option value="ar">Arabic</option>
-              <option value="bn">Bengali</option>
-              <option value="bg">Bulgarian</option>
-              <option value="my">Burmese</option>
-              <option value="zh">Chinese</option>
-              <option value="hr">Croatian</option>
-              <option value="cs">Czech</option>
-              <option value="da">Danish</option>
-              <option value="nl">Dutch</option>
-              <option value="en">English</option>
-              <option value="et">Estonian</option>
-              <option value="fi">Finnish</option>
-              <option value="fr">French</option>
-              <option value="de">German</option>
-              <option value="el">Greek</option>
-              <option value="he">Hebrew</option>
-              <option value="hi">Hindi</option>
-              <option value="hu">Hungarian</option>
-              <option value="is">Icelandic</option>
-              <option value="id">Indonesian</option>
-              <option value="it">Italian</option>
-              <option value="ja">Japanese</option>
-              <option value="ko">Korean</option>
-              <option value="lo">Lao</option>
-              <option value="lv">Latvian</option>
-              <option value="lt">Lithuanian</option>
-              <option value="ms">Malay</option>
-              <option value="mt">Maltese</option>
-              <option value="mr">Marathi</option>
-              <option value="ne">Nepali</option>
-              <option value="no">Norwegian</option>
-              <option value="pa">Punjabi</option>
-              <option value="fa">Persian</option>
-              <option value="pl">Polish</option>
-              <option value="pt">Portuguese</option>
-              <option value="ro">Romanian</option>
-              <option value="ru">Russian</option>
-              <option value="sr">Serbian</option>
-              <option value="si">Sinhala</option>
-              <option value="sk">Slovak</option>
-              <option value="sl">Slovenian</option>
-              <option value="es">Spanish</option>
-              <option value="sw">Swahili</option>
-              <option value="sv">Swedish</option>
-              <option value="ta">Tamil</option>
-              <option value="te">Telugu</option>
-              <option value="th">Thai</option>
-              <option value="tr">Turkish</option>
-              <option value="uk">Ukrainian</option>
-              <option value="ur">Urdu</option>
-              <option value="vi">Vietnamese</option>
-              <option value="xh">Xhosa</option>
-              <option value="yo">Yoruba</option>
-              <option value="zu">Zulu</option>
-              <option value="km">Khmer</option>
-              <option value="ga">Irish</option>
-              <option value="km">Khmer</option>
-              <option value="km">Khmer</option>
+              {language.map((d, i) => (
+                <option key={i} value={d.v}>{d.n}</option>
+              ))}
             </select>
           </div>
 
