@@ -773,3 +773,11 @@
   margin: 0.3rem 0;
   color: #444;
 }
+
+.copy-btn:nth-child(2){
+  right: 100px;
+}
+
+.copy-btn:nth-child(3){
+  right: 100px;
+}
